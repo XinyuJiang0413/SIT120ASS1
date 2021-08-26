@@ -29,15 +29,45 @@
 
         <div id="main">
           <div class="inner">
-            <header>
-              <h2>connect details <br>please see here </h2>
-              <div class="color">
-                <h2>xxxx@xxxx.com<br>+(xx) xxxxxxx</h2>
+            <section>
+                <h2>Get in touch</h2>
+                <form method="post" action="#">
+                  <div class="fields">
+                    <div class="field half">
+                      <input type="text" name="name" id="name" placeholder="Name" />
+                    </div>
+                    <div class="field half">
+                      <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="field">
+                      <textarea name="message" id="message" placeholder="Message"></textarea>
+                    </div>
+                  </div>
+                  <ul class="actions">
+                    <li><input type="submit" value="Send" class="primary" /></li>
+
+                    
+                  </ul>
+                </form>
+              </section>
+              <div id="todoapp" class=fields>
+              <div class="field half">
+                <input v-model="inputValue" type="text" @keyup.enter="add" autofocus="autofocus" autocomplete="off" placeholder="Opinion column">
               </div>
-            </header>
+              <section class = "main">
+                <ul class="todo-list">
+                  <li class="todo" v-for="(item,index) in list">
+                    <div>
+                      <span>{{index+1}}.</span>
+                      <label>{{item}}</label>
+                    </div>
+                  </li>
+          </ul>
+        </section>
+        </div>
           </div>
         </div>
-                  
+
       <footer>
         <div class="inner">
           <p>&copy; SIT120 Switch Game Reviewer</p>
@@ -45,4 +75,20 @@
       </footer>   
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#todoapp",
+      data: {
+        list:[
+        ],
+        inputValue:"Opinion1: "
+      },
+      methods: {
+        add:function(){
+          this.list.push(this.inputValue);
+        }
+      }
+    })
+  </script>
 </html>
